@@ -39,4 +39,20 @@ export class Localization {
     }
     return this.bundle.formatPattern(message.value, args);
   }
+
+  getBooleanSchemaErrorMessage() {
+    return this.#formatMessage("boolean-schema-error", {});
+  }
+
+  /** @type (expectedTypes: string[]) => string */
+  getTypeErrorMessage(expectedTypes) {
+    return this.#formatMessage("type-error", {
+      expectedTypes: this.disjunction.format(expectedTypes)
+    });
+  }
+
+  /** @type (minimum: number) => string */
+  getMinimumErrorMessage(minimum) {
+    return this.#formatMessage("minimum-error", { minimum });
+  }
 }

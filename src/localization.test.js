@@ -20,6 +20,6 @@ describe("Localization", () => {
 
   test("unsupported message", async () => {
     const localization = await Localization.forLocale(fixtureLocale);
-    expect(() => localization.getFalseSchemaErrorMessage()).to.throw(Error);
+    expect(() => localization.getBooleanSchemaErrorMessage()).to.throw(Error);
   });
 });
