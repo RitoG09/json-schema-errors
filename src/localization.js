@@ -58,6 +58,14 @@ export class Localization {
     });
   }
 
+  /** @type (expected: Json[]) => string */
+  getEnumErrorMessage(expected) {
+    const expectedJson = expected.map((value) => JSON.stringify(value));
+    return this.#formatMessage("enum-error", {
+      expected: this.disjunction.format(expectedJson)
+    });
+  }
+
   /** @type (minimum: number) => string */
   getMinimumErrorMessage(minimum) {
     return this.#formatMessage("minimum-error", { minimum });
