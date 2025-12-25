@@ -85,4 +85,9 @@ export class Localization {
   getMinimumErrorMessage(minimum) {
     return this.#formatMessage("minimum-error", { minimum });
   }
+
+  /** @type (format: string) => string */
+  getFormatErrorMessage(format) {
+    return this.#formatMessage("format-error", { format });
+  }
 }

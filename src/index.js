@@ -6,6 +6,7 @@ import definitionsNormalizationHandler from "./normalization-handlers/definition
 import enumNormalizationHandler from "./normalization-handlers/enum.js";
 import exclusiveMaximumNormalizationHandler from "./normalization-handlers/exclusiveMaximum.js";
 import exclusiveMinimumNormalizationHandler from "./normalization-handlers/exclusiveMinimum.js";
+import formatNormalizationHandler from "./normalization-handlers/format.js";
 import maximumNormalizationHandler from "./normalization-handlers/maximum.js";
 import minimumNormalizationHandler from "./normalization-handlers/minimum.js";
 import propertiesNormalizationHandler from "./normalization-handlers/properties.js";
@@ -21,10 +22,18 @@ import exclusiveMaximumErrorHandler from "./error-handlers/exclusiveMaximum.js";
 import exclusiveMinimumErrorHandler from "./error-handlers/exclusiveMinimum.js";
 import maximumErrorHandler from "./error-handlers/maximum.js";
 import minimumErrorHandler from "./error-handlers/minimum.js";
+import formatErrorHandler from "./error-handlers/format.js";
 
 setNormalizationHandler("https://json-schema.org/keyword/const", constNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/definitions", definitionsNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/enum", enumNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/format", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/format-assertion", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-2019-09/format", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-2019-09/format-assertion", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-07/format", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-06/format", formatNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-04/format", formatNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/exclusiveMaximum", exclusiveMaximumNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/exclusiveMinimum", exclusiveMinimumNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/maximum", maximumNormalizationHandler);
@@ -41,5 +50,6 @@ addErrorHandler(exclusiveMaximumErrorHandler);
 addErrorHandler(exclusiveMinimumErrorHandler);
 addErrorHandler(minimumErrorHandler);
 addErrorHandler(maximumErrorHandler);
+addErrorHandler(formatErrorHandler);
 
 export { addErrorHandler, jsonSchemaErrors, setNormalizationHandler } from "./json-schema-errors.js";
