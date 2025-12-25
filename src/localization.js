@@ -15,6 +15,7 @@ export class Localization {
     this.locale = locale;
     this.bundle = bundle;
     this.disjunction = new Intl.ListFormat(this.locale, { type: "disjunction" });
+    this.conjunction = new Intl.ListFormat(this.locale, { type: "conjunction" });
   }
 
   /** @type (locale: string) => Promise<Localization> */
@@ -89,5 +90,13 @@ export class Localization {
   /** @type (format: string) => string */
   getFormatErrorMessage(format) {
     return this.#formatMessage("format-error", { format });
+  }
+
+  /** @type (required: string[]) => string */
+  getRequiredErrorMessage(required) {
+    return this.#formatMessage("required-error", {
+      required: this.conjunction.format(required),
+      count: required.length
+    });
   }
 }
