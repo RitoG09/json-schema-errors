@@ -20,6 +20,7 @@ pattern-error = Expected a string matching the regular expression /{$pattern}/
 // Array keywords
 maxItems-error = Expected an array with at most {$maxItems} items
 minItems-error = Expected an array with at least {$minItems} items
+uniqueItems-error = Duplicated item
 
 // Object keywords
 required-error = Required {$count ->

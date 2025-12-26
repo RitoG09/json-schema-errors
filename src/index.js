@@ -20,6 +20,7 @@ import propertiesNormalizationHandler from "./normalization-handlers/properties.
 import refNormalizationHandler from "./normalization-handlers/ref.js";
 import requiredNormalizationHandler from "./normalization-handlers/required.js";
 import typeNormalizationHandler from "./normalization-handlers/type.js";
+import uniqueItemsNormalizationHandler from "./normalization-handlers/uniqueItems.js";
 
 // Error Handlers
 import booleanSchemaErrorHandler from "./error-handlers/boolean-schema.js";
@@ -39,6 +40,7 @@ import multipleOfErrorHandler from "./error-handlers/multipleOf.js";
 import patternErrorHandler from "./error-handlers/pattern.js";
 import requiredErrorHandler from "./error-handlers/required.js";
 import typeErrorHandler from "./error-handlers/type.js";
+import uniqueItemsErrorHandler from "./error-handlers/uniqueItems.js";
 
 setNormalizationHandler("https://json-schema.org/keyword/const", constNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/definitions", definitionsNormalizationHandler);
@@ -65,6 +67,7 @@ setNormalizationHandler("https://json-schema.org/keyword/properties", properties
 setNormalizationHandler("https://json-schema.org/keyword/ref", refNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/required", requiredNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/type", typeNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/uniqueItems", uniqueItemsNormalizationHandler);
 
 addErrorHandler(booleanSchemaErrorHandler);
 addErrorHandler(constErrorHandler);
@@ -83,5 +86,6 @@ addErrorHandler(multipleOfErrorHandler);
 addErrorHandler(patternErrorHandler);
 addErrorHandler(requiredErrorHandler);
 addErrorHandler(typeErrorHandler);
+addErrorHandler(uniqueItemsErrorHandler);
 
 export { addErrorHandler, jsonSchemaErrors, setNormalizationHandler } from "./json-schema-errors.js";

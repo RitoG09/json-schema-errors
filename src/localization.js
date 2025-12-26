@@ -117,6 +117,11 @@ export class Localization {
     return this.#formatMessage("minItems-error", { minItems });
   }
 
+  /** @type () => string */
+  getUniqueItemsErrorMessage() {
+    return this.#formatMessage("uniqueItems-error", {});
+  }
+
   /** @type (format: string) => string */
   getFormatErrorMessage(format) {
     return this.#formatMessage("format-error", { format });
