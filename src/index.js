@@ -4,6 +4,7 @@ import { addErrorHandler, setNormalizationHandler } from "./json-schema-errors.j
 import constNormalizationHandler from "./normalization-handlers/const.js";
 import definitionsNormalizationHandler from "./normalization-handlers/definitions.js";
 import dependentRequiredNormalizationHandler from "./normalization-handlers/dependentRequired.js";
+import dynamicRefNormalizationHandler from "./normalization-handlers/dynamicRef.js";
 import enumNormalizationHandler from "./normalization-handlers/enum.js";
 import exclusiveMaximumNormalizationHandler from "./normalization-handlers/exclusiveMaximum.js";
 import exclusiveMinimumNormalizationHandler from "./normalization-handlers/exclusiveMinimum.js";
@@ -49,6 +50,7 @@ import uniqueItemsErrorHandler from "./error-handlers/uniqueItems.js";
 setNormalizationHandler("https://json-schema.org/keyword/const", constNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/definitions", definitionsNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/dependentRequired", dependentRequiredNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/dynamicRef", dynamicRefNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/enum", enumNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/format", formatNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/format-assertion", formatNormalizationHandler);

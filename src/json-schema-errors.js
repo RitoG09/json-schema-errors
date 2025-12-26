@@ -33,8 +33,7 @@ export async function normalizedErrorOuput(instance, errorOutput, subjectUri) {
   const errorIndex = await constructErrorIndex(errorOutput, schema);
   const { schemaUri, ast } = await compile(schema);
   const value = Instance.fromJs(instance);
-  /** @type API.EvaluationContext */
-  return evaluateSchema(schemaUri, value, { ast, errorIndex, plugins: [] });
+  return evaluateSchema(schemaUri, value, { ast, errorIndex, plugins: [...ast.plugins] });
 }
 
 /** @type (outputUnit: API.OutputUnit, schema: Browser<SchemaDocument>, errorIndex?: API.ErrorIndex) => Promise<API.ErrorIndex> */
@@ -64,6 +63,7 @@ export const constructErrorIndex = async (outputUnit, schema, errorIndex = {}) =
     errorIndex[absoluteKeywordLocation][instanceLocation] = true;
     await constructErrorIndex(errorOutputUnit, schema, errorIndex);
   }
+
   return errorIndex;
 };
 
