@@ -1,6 +1,7 @@
 import { addErrorHandler, setNormalizationHandler } from "./json-schema-errors.js";
 
 // Normalization Handlers
+import additionalPropertiesNormalizationHandler from "./normalization-handlers/additionalProperties.js";
 import allOfNormalizationHandler from "./normalization-handlers/allOf.js";
 import anyOfNormalizationHandler from "./normalization-handlers/anyOf.js";
 import constNormalizationHandler from "./normalization-handlers/const.js";
@@ -58,6 +59,7 @@ import requiredErrorHandler from "./error-handlers/required.js";
 import typeErrorHandler from "./error-handlers/type.js";
 import uniqueItemsErrorHandler from "./error-handlers/uniqueItems.js";
 
+setNormalizationHandler("https://json-schema.org/keyword/additionalProperties", additionalPropertiesNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/allOf", allOfNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/anyOf", anyOfNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/const", constNormalizationHandler);
