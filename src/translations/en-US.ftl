@@ -32,3 +32,7 @@ required-error = Required {$count ->
 
 // Applicators
 anyOf-error = None of the alternatives match
+oneOf-error = {$matchCount ->
+  [0] None
+  *[other] More than one
+} of the alternatives match
