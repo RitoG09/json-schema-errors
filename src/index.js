@@ -7,6 +7,7 @@ import anyOfNormalizationHandler from "./normalization-handlers/anyOf.js";
 import constNormalizationHandler from "./normalization-handlers/const.js";
 import definitionsNormalizationHandler from "./normalization-handlers/definitions.js";
 import dependentRequiredNormalizationHandler from "./normalization-handlers/dependentRequired.js";
+import dependentSchemasNormalizationHandler from "./normalization-handlers/dependentSchemas.js";
 import dynamicRefNormalizationHandler from "./normalization-handlers/dynamicRef.js";
 import elseNormalizationHandler from "./normalization-handlers/else.js";
 import enumNormalizationHandler from "./normalization-handlers/enum.js";
@@ -66,6 +67,7 @@ setNormalizationHandler("https://json-schema.org/keyword/anyOf", anyOfNormalizat
 setNormalizationHandler("https://json-schema.org/keyword/const", constNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/definitions", definitionsNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/dependentRequired", dependentRequiredNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/dependentSchemas", dependentSchemasNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/draft-2020-12/dynamicRef", dynamicRefNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/else", elseNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/enum", enumNormalizationHandler);
