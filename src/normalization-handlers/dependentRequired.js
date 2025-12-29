@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const dependentRequiredNormalizationHandler = {
-  appliesTo(type) {
-    return type === "object";
+  evaluate() {
   }
 };
 

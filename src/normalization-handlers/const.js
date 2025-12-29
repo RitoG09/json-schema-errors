@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const constNormalizationHandler = {
-  appliesTo() {
-    return true;
+  evaluate() {
   }
 };
 

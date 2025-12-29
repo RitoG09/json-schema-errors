@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const maxItemsNormalizationHandler = {
-  appliesTo(type) {
-    return type === "array";
+  evaluate() {
   }
 };
 

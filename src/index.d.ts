@@ -42,8 +42,7 @@ export type ErrorObject = {
 };
 
 export type KeywordHandler<KeywordValue = unknown, Context extends EvaluationContext = EvaluationContext> = {
-  evaluate?(value: KeywordValue, instance: JsonNode, context: Context): NormalizedOutput[];
-  appliesTo?(type: string): boolean;
+  evaluate(value: KeywordValue, instance: JsonNode, context: Context): NormalizedOutput[] | void;
   simpleApplicator?: true;
 };
 

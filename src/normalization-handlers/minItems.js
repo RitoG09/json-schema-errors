@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const minItemsNormalizationHandler = {
-  appliesTo(type) {
-    return type === "array";
+  evaluate() {
   }
 };
 

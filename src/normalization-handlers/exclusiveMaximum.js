@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const exclusiveMaximumNormalizationHandler = {
-  appliesTo(type) {
-    return type === "number";
+  evaluate() {
   }
 };
 

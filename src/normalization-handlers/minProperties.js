@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const minPropertiesNormalizationHandler = {
-  appliesTo(type) {
-    return type === "object";
+  evaluate() {
   }
 };
 

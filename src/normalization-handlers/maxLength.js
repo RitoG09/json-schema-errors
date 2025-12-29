@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const maxLengthNormalizationHandler = {
-  appliesTo(type) {
-    return type === "string";
+  evaluate() {
   }
 };
 

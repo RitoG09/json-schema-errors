@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const maxPropertiesNormalizationHandler = {
-  appliesTo(type) {
-    return type === "object";
+  evaluate() {
   }
 };
 

@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const minimumNormalizationHandler = {
-  appliesTo(type) {
-    return type === "number";
+  evaluate() {
   }
 };
 

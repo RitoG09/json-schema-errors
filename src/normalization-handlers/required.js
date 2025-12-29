@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const requiredNormalizationHandler = {
-  appliesTo(type) {
-    return type === "object";
+  evaluate() {
   }
 };
 

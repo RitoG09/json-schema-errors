@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const formatNormalizationHandler = {
-  appliesTo() {
-    return true;
+  evaluate() {
   }
 };
 

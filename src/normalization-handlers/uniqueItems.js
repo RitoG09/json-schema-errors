@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const uniqueItemsNormalizationHandler = {
-  appliesTo(type) {
-    return type === "array";
+  evaluate() {
   }
 };
 

@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const patternNormalizationHandler = {
-  appliesTo(type) {
-    return type === "string";
+  evaluate() {
   }
 };
 

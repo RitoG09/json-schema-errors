@@ -39,6 +39,7 @@ import typeNormalizationHandler from "./normalization-handlers/type.js";
 import unevaluatedItemsNormalizationHandler from "./normalization-handlers/unevaluatedItems.js";
 import unevaluatedPropertiesNormalizationHandler from "./normalization-handlers/unevaluatedProperties.js";
 import uniqueItemsNormalizationHandler from "./normalization-handlers/uniqueItems.js";
+import unknownNormalizationHandler from "./normalization-handlers/unknown.js";
 
 // Error Handlers
 import anyOfErrorHandler from "./error-handlers/anyOf.js";
@@ -110,6 +111,7 @@ setNormalizationHandler("https://json-schema.org/keyword/type", typeNormalizatio
 setNormalizationHandler("https://json-schema.org/keyword/unevaluatedItems", unevaluatedItemsNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/unevaluatedProperties", unevaluatedPropertiesNormalizationHandler);
 setNormalizationHandler("https://json-schema.org/keyword/uniqueItems", uniqueItemsNormalizationHandler);
+setNormalizationHandler("https://json-schema.org/keyword/unknown", unknownNormalizationHandler);
 
 addErrorHandler(anyOfErrorHandler);
 addErrorHandler(booleanSchemaErrorHandler);

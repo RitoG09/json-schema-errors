@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const exclusiveMinimumKeywordHandler = {
-  appliesTo(type) {
-    return type === "number";
+  evaluate() {
   }
 };
 

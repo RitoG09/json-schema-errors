@@ -3,9 +3,9 @@
  */
 
 /** @type KeywordHandler */
-const maximumNormalizationHandler = {
+const unknownNormalizationHandler = {
   evaluate() {
   }
 };
 
-export default maximumNormalizationHandler;
+export default unknownNormalizationHandler;

@@ -21,11 +21,11 @@ export async function jsonSchemaErrors(errorOutput, schemaUri, instance, options
 };
 
 /** @type Record<string, API.KeywordHandler> */
-const normalizationKeywordHandlers = {};
+const normalizationHandlers = {};
 
 /** @type API.setNormalizationHandler */
 export const setNormalizationHandler = (uri, handler) => {
-  normalizationKeywordHandlers[uri] = handler;
+  normalizationHandlers[uri] = handler;
 };
 
 /** @type (instance: API.Json, errorOutput: API.OutputUnit, subjectUri: string) => Promise<API.NormalizedOutput> */
@@ -108,7 +108,12 @@ export const evaluateSchema = (schemaLocation, instance, context) => {
   } else {
     for (const node of schemaNode) {
       const [keywordUri, keywordLocation, keywordValue] = node;
-      const keyword = normalizationKeywordHandlers[keywordUri] ?? {};
+      const normalizedKeywordUri = toAbsoluteIri(keywordUri);
+
+      if (!(normalizedKeywordUri in normalizationHandlers)) {
+        throw Error(`Encountered unsupported keyword ${keywordUri}. Use the 'setNormalizationHandler' function to add support for this keyword.`);
+      }
+      const keyword = normalizationHandlers[normalizedKeywordUri];
 
       const validationKeyword = getKeyword(keywordUri);
 
@@ -121,7 +126,7 @@ export const evaluateSchema = (schemaLocation, instance, context) => {
         plugin.beforeKeyword?.(node, instance, keywordContext, context, validationKeyword);
       }
 
-      const keywordOutput = keyword.evaluate?.(keywordValue, instance, keywordContext);
+      const keywordOutput = keyword.evaluate(keywordValue, instance, keywordContext);
       const isKeywordValid = !context.errorIndex[keywordLocation]?.[instanceLocation];
       if (!isKeywordValid) {
         valid = false;
@@ -131,12 +136,9 @@ export const evaluateSchema = (schemaLocation, instance, context) => {
         for (const suboutput of /** @type API.NormalizedOutput[] */ (keywordOutput)) {
           mergeOutput(output, suboutput);
         }
-      } else if (!isKeywordValid) {
-        output[instanceLocation][toAbsoluteIri(keywordUri)] ??= {};
-        output[instanceLocation][toAbsoluteIri(keywordUri)][keywordLocation] = keywordOutput ?? false;
-      } else if (keyword.appliesTo?.(Instance.typeOf(instance)) !== false) {
-        output[instanceLocation][keywordUri] ??= {};
-        output[instanceLocation][keywordUri][keywordLocation] = isKeywordValid;
+      } else {
+        output[instanceLocation][normalizedKeywordUri] ??= {};
+        output[instanceLocation][normalizedKeywordUri][keywordLocation] = isKeywordValid || (keywordOutput ?? false);
       }
 
       for (const plugin of context.plugins) {

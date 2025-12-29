@@ -4,8 +4,7 @@
 
 /** @type KeywordHandler */
 const multipleOfNormalizationHandler = {
-  appliesTo(type) {
-    return type === "number";
+  evaluate() {
   }
 };
 
