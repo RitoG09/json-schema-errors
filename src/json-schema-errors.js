@@ -189,3 +189,25 @@ export const errorHandlers = [];
 export const addErrorHandler = (errorHandler) => {
   errorHandlers.push(errorHandler);
 };
+
+/** @type (output: API.NormalizedOutput) => boolean */
+export const isSchemaValid = (output) => {
+  for (const instanceLocation in output) {
+    for (const keywordUri in output[instanceLocation]) {
+      for (const schemaLocation in output[instanceLocation][keywordUri]) {
+        if (typeof output[instanceLocation][keywordUri][schemaLocation] === "boolean") {
+          if (!output[instanceLocation][keywordUri][schemaLocation]) {
+            return false;
+          }
+        } else {
+          // Empty array is valid
+          if (output[instanceLocation][keywordUri][schemaLocation].length > 0) {
+            return false;
+          }
+        }
+      }
+    }
+  }
+
+  return true;
+};

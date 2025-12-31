@@ -6,6 +6,13 @@ import { FluentBundle, FluentResource } from "@fluent/bundle";
  * @import { Json } from "./index.js"
  */
 
+/**
+ * @typedef {{
+ *   minContains?: number;
+ *   maxContains?: number;
+ * }} ContainsRange
+ */
+
 export class Localization {
   /**
    * @param {string} locale
@@ -120,6 +127,19 @@ export class Localization {
   /** @type (minItems: number) => string */
   getMinItemsErrorMessage(minItems) {
     return this.#formatMessage("minItems-error", { minItems });
+  }
+
+  /** @type (range: ContainsRange) => string */
+  getContainsErrorMessage(range) {
+    range.minContains ??= 1;
+
+    if (range.minContains === range.maxContains) {
+      return this.#formatMessage("contains-exact-error", range);
+    } else if (range.maxContains) {
+      return this.#formatMessage("contains-range-error", range);
+    } else {
+      return this.#formatMessage("contains-error", range);
+    }
   }
 
   /** @type () => string */

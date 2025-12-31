@@ -21,6 +21,15 @@ pattern-error = Expected a string matching the regular expression /{$pattern}/
 // Array keywords
 maxItems-error = Expected an array with at most {$maxItems} items
 minItems-error = Expected an array with at least {$minItems} items
+contains-error = Expected an array that contains {$minContains ->
+  [1] at least one item that passes
+ *[other] at least {$minContains} items that pass
+} the 'contains' schema
+contains-range-error = Expected an array that contains between {$minContains} and {$maxContains} items that pass the 'contains' schema
+contains-exact-error = Expected an array that contains {$minContains ->
+  [1] one item that passes
+ *[other] {$minContains} items that pass
+} the 'contains' schema
 uniqueItems-error = Duplicated item
 
 // Object keywords
