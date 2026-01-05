@@ -74,9 +74,14 @@ const constructErrorIndex = async (outputUnit, schema, errorIndex = {}) => {
  * @returns {Promise<string>}
  */
 async function toAbsoluteKeywordLocation(schema, keywordLocation) {
+  if (keywordLocation.startsWith("#")) {
+    keywordLocation = keywordLocation.slice(1);
+  }
+
   for (const segment of pointerSegments(keywordLocation)) {
     schema = await Schema.step(segment, schema);
   }
+
   return `${schema.document.baseUri}#${schema.cursor}`;
 }
 

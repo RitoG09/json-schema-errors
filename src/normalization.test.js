@@ -91,6 +91,35 @@ describe("Normalization", async () => {
     ]);
   });
 
+  test("output with keywordLocation with leading #", async () => {
+    registerSchema({
+      $schema: "https://json-schema.org/draft/2020-12/schema",
+      type: "number"
+    }, schemaUri);
+
+    const instance = "foo";
+
+    /** @type OutputFormat */
+    const output = {
+      valid: false,
+      errors: [
+        {
+          keywordLocation: `#/type`,
+          instanceLocation: "#"
+        }
+      ]
+    };
+
+    const errors = await jsonSchemaErrors(output, schemaUri, instance);
+    expect(errors).to.eql([
+      {
+        message: localization.getTypeErrorMessage(["number"]),
+        instanceLocation: "#",
+        schemaLocations: [`${schemaUri}#/type`]
+      }
+    ]);
+  });
+
   test("output with keywordLocation crossing a $ref", async () => {
     registerSchema({
       $schema: "https://json-schema.org/draft/2020-12/schema",
