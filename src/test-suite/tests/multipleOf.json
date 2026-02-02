@@ -44,6 +44,24 @@
           "schemaLocations": ["#/allOf/0/multipleOf", "#/allOf/1/multipleOf", "#/allOf/2/multipleOf"]
         }
       ]
+    },
+    {
+      "description": "multiple decimal multipleOf constraints (LCM of 0.2 and 0.3)",
+      "schema": {
+        "allOf": [
+          { "multipleOf": 0.2 },
+          { "multipleOf": 0.3 }
+        ]
+      },
+      "instance": 0.7,
+      "errors": [
+        {
+          "messageId": "multipleOf-message",
+          "messageParams": { "multipleOf": "0.6" },
+          "instanceLocation": "#",
+          "schemaLocations": ["#/allOf/0/multipleOf", "#/allOf/1/multipleOf"]
+        }
+      ]
     }
   ]
 }
